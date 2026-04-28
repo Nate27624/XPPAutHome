@@ -1,0 +1,19 @@
+{
+  "name": "@xpp/core-api",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "GPL-2.0-or-later",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run lint",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "zod": "^3.24.4"
+  }
+}

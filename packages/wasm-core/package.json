@@ -1,0 +1,33 @@
+{
+  "name": "@xpp/wasm-core",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "GPL-2.0-or-later",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./worker": "./src/worker.ts"
+  },
+  "files": [
+    "dist",
+    "src/wasm",
+    "scripts"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "build:wasm": "bash ./scripts/build-wasm.sh"
+  },
+  "dependencies": {
+    "@xpp/core-api": "0.1.0",
+    "mathjs": "^14.5.2"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.8"
+  }
+}

@@ -1,0 +1,52 @@
+From 8d5f0efb2c8f16f6d0bf6a2151b1d6db77f8a321 Mon Sep 17 00:00:00 2001
+From: XP Web Port <maintainers@example.com>
+Date: Sat, 25 Apr 2026 00:00:00 +0000
+Subject: [PATCH] Add headless wasm compile guard and wrapper API hooks
+
+--- a/main.c
++++ b/main.c
+@@
+-  if(!XPPBatch)
+-  {
+-       init_X();
+-  }
++  #ifndef XPP_WASM_HEADLESS
++  if(!XPPBatch)
++  {
++       init_X();
++  }
++  #endif
+@@
+-  do_events(min_wid,min_hgt);
++  #ifndef XPP_WASM_HEADLESS
++  do_events(min_wid,min_hgt);
++  #endif
+ 
+--- a/auto_nox.c
++++ b/auto_nox.c
+@@
+-void redraw_auto_menus();
++void redraw_auto_menus();
++#ifdef XPP_WASM_HEADLESS
++void redraw_auto_menus() { }
++#endif
+@@
+-void do_auto(iold,isave,itp)
++void do_auto(iold,isave,itp)
+@@
+-      redraw_auto_menus();
++      #ifndef XPP_WASM_HEADLESS
++      redraw_auto_menus();
++      #endif
+
+--- /dev/null
++++ b/src/wasm/xpw_api.c
+@@
++/* xpw_api.c exports JSON-in/JSON-out bridge used by web worker runtime */
++int xpw_boot(void);
++const char *xpw_load_model(const char *ode_text, const char *file_name);
++const char *xpw_get_model_info(void);
++const char *xpw_run_simulation(const char *request_json);
++const char *xpw_run_phase_plane(const char *request_json);
++const char *xpw_run_bifurcation(const char *request_json);
++void xpw_free(void);

@@ -1,0 +1,15 @@
+{
+  "name": "@xpp/benchmark",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build": "echo 'benchmark package is data + scripts only'",
+    "lint": "node ./scripts/check-models.mjs",
+    "test": "node ./scripts/check-models.mjs"
+  },
+  "dependencies": {
+    "@xpp/wasm-core": "0.1.0"
+  }
+}
