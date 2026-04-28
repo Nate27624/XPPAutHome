@@ -1,0 +1,633 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --ink: #1b2838;
+  --ink-soft: #526376;
+  --accent: #0f766a;
+  --accent-strong: #0b5f55;
+  --accent-soft: rgba(15, 118, 106, 0.13);
+  --surface: #ffffff;
+  --surface-soft: #f7fafc;
+  --panel-border: rgba(27, 40, 56, 0.14);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 10px 30px rgba(16, 33, 53, 0.09);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Outfit", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(126, 171, 240, 0.3), transparent 32%),
+    radial-gradient(circle at 88% 16%, rgba(166, 220, 189, 0.3), transparent 30%),
+    linear-gradient(165deg, #f4f8fb 0%, #edf3f7 48%, #f7f8f4 100%);
+}
+
+.appRoot {
+  width: min(1120px, calc(100% - 1.5rem));
+  margin: 1rem auto 2rem;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.hero {
+  border-radius: var(--radius);
+  padding: 1.05rem 1.15rem;
+  background: linear-gradient(115deg, rgba(15, 118, 106, 0.16), rgba(39, 102, 189, 0.14));
+  border: 1px solid var(--panel-border);
+  box-shadow: var(--shadow);
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.3rem, 1.15rem + 1vw, 1.85rem);
+  letter-spacing: 0.01em;
+}
+
+.hero p {
+  margin: 0.4rem 0 0;
+  color: #2e4258;
+  max-width: 76ch;
+}
+
+.metaRow {
+  margin-top: 0.7rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.metricPill {
+  border: 1px solid rgba(15, 118, 106, 0.28);
+  border-radius: 999px;
+  padding: 0.22rem 0.56rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.toolbar {
+  display: grid;
+  gap: 0.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--panel-border);
+  background: rgba(255, 255, 255, 0.74);
+  padding: 0.7rem;
+}
+
+.toolbarLabel {
+  font-size: 0.73rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #3f4f61;
+}
+
+.toolbarHint {
+  margin: -0.1rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.84rem;
+}
+
+.toolbarRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.toolbarField {
+  display: grid;
+  gap: 0.22rem;
+  min-width: min(440px, 100%);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #415365;
+}
+
+.toolbarField select {
+  width: 100%;
+  border: 1px solid rgba(27, 40, 56, 0.2);
+  border-radius: 8px;
+  padding: 0.45rem 0.54rem;
+  background: #fff;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.9rem;
+}
+
+.toolbarField select:focus {
+  border-color: rgba(15, 118, 106, 0.44);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(15, 118, 106, 0.12);
+}
+
+button,
+.fileButton {
+  border: 1px solid rgba(27, 40, 56, 0.2);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  padding: 0.46rem 0.72rem;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease, box-shadow 120ms ease;
+}
+
+button:hover,
+.fileButton:hover {
+  border-color: rgba(15, 118, 106, 0.48);
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.58;
+  cursor: wait;
+  transform: none;
+}
+
+button:focus-visible,
+.fileButton:focus-within {
+  outline: 2px solid rgba(15, 118, 106, 0.34);
+  outline-offset: 1px;
+}
+
+.btnPrimary {
+  background: linear-gradient(180deg, #0f766a, #0b655a);
+  border-color: #0c5f54;
+  color: #f7fffd;
+  box-shadow: 0 6px 16px rgba(15, 118, 106, 0.3);
+}
+
+.btnPrimary:hover {
+  border-color: #09554b;
+  background: linear-gradient(180deg, #0f7f72, #0b685d);
+}
+
+.btnGhost {
+  background: rgba(15, 118, 106, 0.07);
+  border-color: rgba(15, 118, 106, 0.36);
+  color: var(--accent-strong);
+}
+
+.btnMuted {
+  background: var(--surface-soft);
+  border-color: rgba(27, 40, 56, 0.18);
+}
+
+.fileButton {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fileButtonAlt {
+  background: #f8fbfd;
+  border-style: dashed;
+  border-color: rgba(27, 40, 56, 0.28);
+}
+
+.fileButton input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.statusBar {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--panel-border);
+  background: rgba(255, 255, 255, 0.82);
+  padding: 0.52rem 0.72rem;
+}
+
+.statusBadge {
+  border-radius: 999px;
+  padding: 0.17rem 0.5rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.statusReady {
+  background: rgba(11, 152, 95, 0.14);
+  color: #086846;
+}
+
+.statusBusy {
+  background: rgba(217, 124, 12, 0.15);
+  color: #945000;
+}
+
+.statusText {
+  flex: 1;
+}
+
+.statusInfoButton {
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(27, 40, 56, 0.25);
+  background: rgba(255, 255, 255, 0.9);
+  color: #1f3a58;
+  font-weight: 700;
+  font-size: 0.85rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.statusInfoPanel {
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(27, 40, 56, 0.18);
+  background: rgba(255, 255, 255, 0.88);
+  padding: 0.58rem 0.72rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.statusInfoPanel p {
+  margin: 0;
+  font-size: 0.86rem;
+  color: #33485f;
+}
+
+.statusInfoList {
+  margin: 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.18rem;
+  font-size: 0.82rem;
+  color: #445b73;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  border-radius: var(--radius-sm);
+  padding: 0.28rem;
+  border: 1px solid var(--panel-border);
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.tabButton {
+  background: transparent;
+  border-color: transparent;
+}
+
+.tabActive {
+  background: #ffffff;
+  border-color: rgba(15, 118, 106, 0.36);
+  color: var(--accent-strong);
+  box-shadow: 0 4px 12px rgba(18, 42, 68, 0.08);
+}
+
+.panelGrid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.panel {
+  grid-column: span 4;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  padding: 0.8rem;
+  display: grid;
+  gap: 0.55rem;
+  align-content: start;
+  box-shadow: var(--shadow);
+}
+
+.panelTall {
+  grid-column: span 5;
+}
+
+.panelWide {
+  grid-column: span 7;
+}
+
+.panelFull {
+  grid-column: span 12;
+}
+
+.panel h2 {
+  margin: 0;
+  font-size: 1rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid rgba(27, 40, 56, 0.1);
+}
+
+.panel label {
+  display: grid;
+  gap: 0.24rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #415365;
+}
+
+.panel input,
+.panel select,
+.panel textarea {
+  width: 100%;
+  border: 1px solid rgba(27, 40, 56, 0.2);
+  border-radius: 8px;
+  padding: 0.45rem 0.54rem;
+  background: #fff;
+}
+
+.panel input,
+.panel select {
+  font-family: "Outfit", sans-serif;
+  font-size: 0.92rem;
+}
+
+.panel textarea {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.83rem;
+  min-height: 340px;
+  resize: vertical;
+}
+
+.panel input:focus,
+.panel select:focus,
+.panel textarea:focus {
+  border-color: rgba(15, 118, 106, 0.44);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(15, 118, 106, 0.12);
+}
+
+.gridTwo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.48rem;
+}
+
+.parameterGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.48rem;
+}
+
+.parameterField {
+  display: grid;
+  gap: 0.24rem;
+}
+
+.parameterField small {
+  color: #5c6d80;
+  font-size: 0.74rem;
+}
+
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.buttonRow button {
+  flex: 1 1 190px;
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.plotSvg {
+  width: 100%;
+  border: 1px solid rgba(27, 40, 56, 0.16);
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+}
+
+.plotLabel {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  fill: #2b3d52;
+}
+
+.plotMetaLabel {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  fill: #57708a;
+}
+
+.bifPointLabel {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  fill: #31485f;
+}
+
+.panelEmpty {
+  border: 1px dashed rgba(27, 40, 56, 0.27);
+  border-radius: var(--radius-sm);
+  padding: 0.58rem;
+  background: rgba(255, 255, 255, 0.78);
+  color: #33475d;
+}
+
+.panelEmptyDetailed {
+  display: grid;
+  gap: 0.36rem;
+}
+
+.panelEmptyDetailed p {
+  margin: 0;
+}
+
+.diagnosticListCompact {
+  margin: 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.22rem;
+  font-size: 0.83rem;
+}
+
+.simpleDetails {
+  border: 1px solid rgba(27, 40, 56, 0.14);
+  border-radius: var(--radius-sm);
+  padding: 0.34rem 0.48rem;
+  background: rgba(255, 255, 255, 0.64);
+}
+
+.simpleDetails > summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #42586f;
+  list-style: none;
+}
+
+.simpleDetails > summary::-webkit-details-marker {
+  display: none;
+}
+
+.simpleDetails[open] > summary {
+  margin-bottom: 0.44rem;
+}
+
+.axisControls {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.inlineCheck {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.86rem;
+  color: #33475d;
+}
+
+.axisSummary {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #4e6278;
+}
+
+.axisControls input:disabled {
+  background: #eef3f7;
+  color: #8392a2;
+  border-color: rgba(27, 40, 56, 0.14);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.34rem;
+  font-size: 0.85rem;
+  color: #37485a;
+}
+
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.dot.lp {
+  background: #d58b18;
+}
+
+.dot.hb {
+  background: #b43f24;
+}
+
+.dot.bif {
+  background: #0f766a;
+}
+
+.dot.ep {
+  background: #265bba;
+}
+
+.dot.un {
+  background: #7a818d;
+}
+
+.dot.fi {
+  background: #1d8b31;
+}
+
+.inspector {
+  border: 1px dashed rgba(27, 40, 56, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 0.52rem;
+  display: grid;
+  gap: 0.2rem;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.pointList {
+  display: grid;
+  gap: 0.35rem;
+  max-height: 220px;
+  overflow: auto;
+  padding-right: 0.2rem;
+}
+
+.pointList button {
+  width: 100%;
+  text-align: left;
+}
+
+.pointButtonActive {
+  border-color: rgba(15, 118, 106, 0.55);
+}
+
+.buttonCol {
+  display: grid;
+  gap: 0.42rem;
+}
+
+.buttonCol button {
+  width: 100%;
+  text-align: left;
+}
+
+.diagnosticList {
+  margin: 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.86rem;
+}
+
+@media (max-width: 980px) {
+  .panel,
+  .panelTall,
+  .panelWide {
+    grid-column: span 12;
+  }
+
+  .gridTwo {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .appRoot {
+    width: calc(100% - 1rem);
+    margin-top: 0.65rem;
+  }
+
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .toolbarRow {
+    flex-direction: column;
+  }
+
+  .toolbarRow button,
+  .toolbarRow .fileButton,
+  .toolbarField {
+    width: 100%;
+  }
+
+  .buttonRow button {
+    flex: 1 1 100%;
+  }
+}
